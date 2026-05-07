@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "main": "expo-router/entry",
   "scripts": {
-    "start": "expo start",
-    "dev": "expo start --port 8082",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "expo start --offline",
+    "dev": "expo start --port 8082 --offline",
+    "android": "expo start --android --offline",
+    "ios": "expo start --ios --offline",
+    "web": "expo start --web --offline",
     "build": "echo 'mobile build step'"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@tempexpo/ui": "workspace:*",
     "expo": "~54.0.33",
     "expo-constants": "~18.0.13",
+    "expo-keep-awake": "~14.0.2",
     "expo-linking": "~8.0.12",
     "expo-notifications": "~0.32.17",
     "expo-router": "~6.0.23",
@@ -27,14 +28,17 @@
     "expo-updates": "~29.0.17",
     "i18next": "latest",
     "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-i18next": "latest",
     "react-native": "0.81.5",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "4.16.0",
+    "react-native-web": "^0.21.2",
     "zustand": "latest"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "@types/react-dom": "~19.1.0",
     "typescript": "~5.9.2"
   },
   "private": true

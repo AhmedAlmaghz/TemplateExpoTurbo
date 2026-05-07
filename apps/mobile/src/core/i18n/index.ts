@@ -76,9 +76,17 @@ export async function initI18n() {
     });
 
   const isRTL = savedLang === 'ar';
-  if (I18nManager.isRTL !== isRTL) {
+  if (Platform.OS === 'web') {
+    if (typeof document !== 'undefined') {
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+      document.documentElement.lang = savedLang;
+    }
     I18nManager.forceRTL(isRTL);
-    await safeReload();
+  } else {
+    if (I18nManager.isRTL !== isRTL) {
+      I18nManager.forceRTL(isRTL);
+      await safeReload();
+    }
   }
 }
 
@@ -87,9 +95,17 @@ export async function changeLanguage(lang: 'ar' | 'en') {
   i18n.changeLanguage(lang);
   
   const isRTL = lang === 'ar';
-  if (I18nManager.isRTL !== isRTL) {
+  if (Platform.OS === 'web') {
+    if (typeof document !== 'undefined') {
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+    }
     I18nManager.forceRTL(isRTL);
-    await safeReload();
+  } else {
+    if (I18nManager.isRTL !== isRTL) {
+      I18nManager.forceRTL(isRTL);
+      await safeReload();
+    }
   }
 }
 
