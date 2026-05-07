@@ -1,0 +1,11 @@
+{
+  "name": "@tempexpo/shared",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'shared built'",
+    "dev": "echo 'shared dev'",
+    "lint": "echo 'shared lint'",
+    "test": "echo 'shared test'"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@tempexpo/api",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo 'api built'",
+    "dev": "tsx watch src/index.ts",
+    "lint": "echo 'api lint'"
+  },
+  "dependencies": {
+    "fastify": "latest",
+    "@fastify/jwt": "latest",
+    "@fastify/cors": "latest",
+    "dotenv": "latest",
+    "zod": "latest",
+    "@tempexpo/db": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "latest",
+    "typescript": "latest",
+    "@types/node": "latest"
+  }
+}
