@@ -212,7 +212,7 @@ export default function HomeTab() {
             /* Pulsating Wireframe Skeletons for Loading State Showcase */
             <View style={styles.skeletonContainer}>
               {[1, 2, 3].map((item) => (
-                <Card key={item} style={[styles.card, { padding: 16 }]}>
+                <Card key={item} style={StyleSheet.flatten([styles.card, { padding: 16 }])}>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Skeleton variant="circle" height={40} width={40} style={{ marginRight: 12 }} />
                     <View style={{ flex: 1 }}>

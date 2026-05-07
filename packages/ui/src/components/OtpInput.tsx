@@ -106,7 +106,7 @@ export const OtpInput: React.FC<OtpInputProps> = ({
               onKeyPress={(e) => handleKeyPress(e, index)}
               onFocus={() => setFocusedIndex(index)}
               onBlur={() => setFocusedIndex(-1)}
-              selectTextOnFocus
+              selectTextOnFocus={true}
             />
           );
         })}

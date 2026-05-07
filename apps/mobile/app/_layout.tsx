@@ -3,6 +3,7 @@ import { ActivityIndicator, View } from 'react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from '@tempexpo/ui';
 import { Stack } from 'expo-router';
+import { LinkPreviewContextProvider } from 'expo-router/build/link/preview/LinkPreviewContext';
 import { initI18n } from '../src/core/i18n';
 
 export default function RootLayout() {
@@ -22,9 +23,11 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <LinkPreviewContextProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </LinkPreviewContextProvider>
     </ThemeProvider>
   );
 }

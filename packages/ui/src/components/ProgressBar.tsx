@@ -28,7 +28,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
   // Animated value for transition
-  const progressAnim = useRef(new Animated.Value(clampedProgress)).current;
+  const progressAnimRef = useRef<Animated.Value | null>(null);
+  if (progressAnimRef.current === null) {
+    progressAnimRef.current = new Animated.Value(clampedProgress);
+  }
+  const progressAnim = progressAnimRef.current;
 
   useEffect(() => {
     if (animated) {

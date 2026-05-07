@@ -18,7 +18,11 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   const theme = useTheme();
 
   // Opacity animated value for pulse effect (0.35 to 0.85)
-  const opacityAnim = useRef(new Animated.Value(0.35)).current;
+  const opacityAnimRef = useRef<Animated.Value | null>(null);
+  if (opacityAnimRef.current === null) {
+    opacityAnimRef.current = new Animated.Value(0.35);
+  }
+  const opacityAnim = opacityAnimRef.current;
 
   useEffect(() => {
     // Loop sequence continuously
@@ -55,7 +59,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       style={[
         styles.pulseBlock,
         {
-          width,
+          width: width as any,
           height,
           borderRadius,
           backgroundColor: theme.colors.border, // standard loading light grey color

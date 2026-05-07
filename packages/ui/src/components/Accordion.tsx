@@ -28,7 +28,11 @@ export const Accordion: React.FC<AccordionProps> = ({
   const [expanded, setExpanded] = useState(initiallyExpanded);
 
   // Animated value for rotating the chevron (0 = closed, 1 = open)
-  const animValue = useRef(new Animated.Value(initiallyExpanded ? 1 : 0)).current;
+  const animValueRef = useRef<Animated.Value | null>(null);
+  if (animValueRef.current === null) {
+    animValueRef.current = new Animated.Value(initiallyExpanded ? 1 : 0);
+  }
+  const animValue = animValueRef.current;
 
   const toggleExpand = () => {
     const nextState = !expanded;

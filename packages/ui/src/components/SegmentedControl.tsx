@@ -32,7 +32,11 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
   const tabWidth = containerWidth / values.length;
 
   // Animation value reflecting the selected index
-  const animatedIndex = useRef(new Animated.Value(selectedIndex)).current;
+  const animatedIndexRef = useRef<Animated.Value | null>(null);
+  if (animatedIndexRef.current === null) {
+    animatedIndexRef.current = new Animated.Value(selectedIndex);
+  }
+  const animatedIndex = animatedIndexRef.current;
 
   useEffect(() => {
     Animated.spring(animatedIndex, {

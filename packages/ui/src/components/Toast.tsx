@@ -34,8 +34,17 @@ export const Toast: React.FC<ToastProps> = ({
   const theme = useTheme();
 
   // Animation values: TranslateY and Opacity
-  const slideAnim = useRef(new Animated.Value(position === 'top' ? -100 : 100)).current;
-  const opacityAnim = useRef(new Animated.Value(0)).current;
+  const slideAnimRef = useRef<Animated.Value | null>(null);
+  if (slideAnimRef.current === null) {
+    slideAnimRef.current = new Animated.Value(position === 'top' ? -100 : 100);
+  }
+  const slideAnim = slideAnimRef.current;
+
+  const opacityAnimRef = useRef<Animated.Value | null>(null);
+  if (opacityAnimRef.current === null) {
+    opacityAnimRef.current = new Animated.Value(0);
+  }
+  const opacityAnim = opacityAnimRef.current;
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined;

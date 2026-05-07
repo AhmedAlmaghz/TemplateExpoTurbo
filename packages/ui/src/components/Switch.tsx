@@ -28,7 +28,11 @@ export const Switch: React.FC<SwitchProps> = ({
 
   // Use Animated for smooth transition
   // We will animate value from 0 (inactive) to 1 (active)
-  const animatedValue = useRef(new Animated.Value(value ? 1 : 0)).current;
+  const animatedValueRef = useRef<Animated.Value | null>(null);
+  if (animatedValueRef.current === null) {
+    animatedValueRef.current = new Animated.Value(value ? 1 : 0);
+  }
+  const animatedValue = animatedValueRef.current;
 
   useEffect(() => {
     Animated.timing(animatedValue, {
